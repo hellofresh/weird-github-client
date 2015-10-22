@@ -1,6 +1,7 @@
 # hellofresh/duplicate-repo
 
 In short, this command:
+
 1. creates a new private repo in your organization (`hellofresh/{candidate}-{test-name}`);
 2. associates it with a code reviewing team
 3. shares the repo with a github user
