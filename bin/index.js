@@ -63,7 +63,7 @@ module.exports = (function() {
 //        github.orgs.getTeams ({'org': 'hellofresh'}, function (err, res){    console.log(JSON.stringify(res));});
 //        return;
 
-        github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':'406537'}, function (){
+        github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':team}, function (){
             exec ('git clone git@github.com:hellofresh/' + repo + ' && cd ' + repo + ' && git remote set-url origin git@github.com:hellofresh/' + target + ' && git push origin master && cd .. && rm -rf ' + repo , function (error, stdout, stderr) {
                 if (!error) {
                     console.log (stdout);
