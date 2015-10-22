@@ -19,13 +19,14 @@ module.exports = (function() {
     var repo = process.env.DEFAULT_REPO;
     var org = process.env.DEFAULT_ORGANIZATION;
     var team = process.env.DEFAULT_REVIEWER_TEAM_ID;
+    var debug = process.env.DEBUG;
 
     // initalize github client
     var GitHubApi = require('github');
     
     var github = new GitHubApi({
         version: '3.0.0',
-        debug: true,
+        debug: debug,
         protocol: 'https',
         host: 'api.github.com',
         pathPrefix: null,
@@ -93,7 +94,13 @@ module.exports = (function() {
         var target = candidate + '-' + repo;
 
         console.log ('creating repo ' + org + '/' + target);
-        github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':team}, function (){
+        github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':team}, function (err, res){
+
+            if (err) {
+                console.log ('something went wrong creating repo');
+                console.log (err);
+                return;
+            }
 
             console.log ('cloning ' + repo + ' into local machine, and pushing to ' + target);
             var sh = 'git clone git@github.com:hellofresh/' + repo +
@@ -104,12 +111,13 @@ module.exports = (function() {
                         '&& rm -rf ' + repo;
             
             exec (sh, function (error, stdout, stderr) {
-                if (!error) {
-                    console.log (stdout);
-                    console.log ('done');
-                } else {
-                    console.log (error);
-                    console.log (stderr);
+                console.log (error);
+                console.log (stdout);
+                console.log (stderr);
+
+                if (error) {
+                    console.log ('something went wrong duplicating the repo.');
+                    return;
                 }
             });
 
@@ -122,8 +130,10 @@ module.exports = (function() {
             }, function (err, res) {
                 if (!err) {
                     console.log ('added ' + candidate + ' to ' + target)
+                    return;
                 } else {
                     console.log ('something went wrong sharing repo with candidate.');
+                    return;
                 }
             });
         });
