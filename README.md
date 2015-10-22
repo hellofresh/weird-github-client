@@ -2,7 +2,7 @@
 
 In short, this command:
 
-1. creates a new private repo in your organization (`hellofresh/{candidate}-{test-name}`);
+1. creates a new private repo in your organization (ex. `hellofresh/{candidate}-{test-name}`);
 2. associates it with a code reviewing team
 3. shares the repo with a github user
 
@@ -22,7 +22,6 @@ IMPORTANT: The github token must have the `repo` and `admin:org` scopes.
 
 ```
 ./bin/index.js
-
 ```
 
 Then just follow the prompt.
