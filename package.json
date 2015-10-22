@@ -1,0 +1,33 @@
+{
+  "name": "duplicate-repo",
+  "version": "1.0.0",
+  "description": "Duplicates a repo on github and adds github users to it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hellofresh/duplicate-repo.git"
+  },
+  "keywords": [
+    "git",
+    "repo",
+    "duplication"
+  ],
+  "author": "Nuno Simaria <ns@hellofresh.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "github": "^0.2.4",
+    "exec": "^0.2.1"
+
+  },
+  "bin": {
+    "s3-mutator": "bin/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/hellofresh/duplicate-repo/issues"
+  },
+  "homepage": "https://github.com/hellofresh/duplicate-repo#readme"
+}
