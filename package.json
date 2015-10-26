@@ -19,9 +19,9 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^1.2.0",
+    "exec": "^0.2.1",
     "github": "^0.2.4",
-    "exec": "^0.2.1"
-
+    "q": "^1.4.1"
   },
   "bin": {
     "s3-mutator": "bin/index.js"
