@@ -4,6 +4,7 @@
   "description": "Duplicates a repo on github and adds github users to it",
   "main": "index.js",
   "scripts": {
+    "run" : "node bin/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,12 +20,12 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^1.2.0",
-    "exec": "^0.2.1",
     "github": "^0.2.4",
+    "inquirer": "^0.11.0",
     "q": "^1.4.1"
   },
   "bin": {
-    "s3-mutator": "bin/index.js"
+    "duplicate-repo": "bin/index.js"
   },
   "bugs": {
     "url": "https://github.com/hellofresh/duplicate-repo/issues"
