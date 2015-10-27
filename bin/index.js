@@ -93,49 +93,65 @@ module.exports = (function() {
 
         var target = candidate + '-' + repo;
 
-        console.log ('creating repo ' + org + '/' + target);
+        console.log ('creating repo ' + org + '/' + target + '.');
         github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':team}, function (err, res){
 
             if (err) {
-                console.log ('something went wrong creating repo');
+                console.log ('something went wrong creating repo.');
                 console.log (err);
                 return;
             }
 
-            console.log ('cloning ' + repo + ' into local machine, and pushing to ' + target);
-            var sh = 'git clone git@github.com:hellofresh/' + repo +
-                        '&& cd ' + repo +
-                        '&& git remote set-url origin git@github.com:hellofresh/' + target +
-                        '&& git push origin master' +
-                        '&& cd ..' + 
-                        '&& rm -rf ' + repo;
-            
-            exec (sh, function (error, stdout, stderr) {
-                console.log (error);
-                console.log (stdout);
-                console.log (stderr);
+            console.log ('changing permissions for team.');
 
-                if (error) {
-                    console.log ('something went wrong duplicating the repo.');
+            github.orgs.updateTeam ({'id' : team, 'name' : target, 'permission' : 'push'}, function (err, res) {
+
+console.log (res); return;
+                if (err) {
+                    console.log ('something went wrong updating permissions for team.');
+                    console.log (err);
                     return;
                 }
+
+                console.log ('cloning ' + repo + ' into local machine, and pushing to ' + target + '.');
+                var sh = 'git clone git@github.com:hellofresh/' + repo +
+                            '&& cd ' + repo +
+                            '&& git remote set-url origin git@github.com:hellofresh/' + target +
+                            '&& git push origin master' +
+                            '&& cd ..' + 
+                            '&& rm -rf ' + repo;
+                
+                exec (sh, function (error, stdout, stderr) {
+                    console.log (error);
+                    console.log (stdout);
+                    console.log (stderr);
+    
+                    if (error) {
+                        console.log ('something went wrong duplicating the repo.');
+                        return;
+                    }
+                });
+    
+                console.log ('sharing repo with candidate ' + candidate + '.');
+                
+                github.repos.addCollaborator ({
+                    'repo':  target,
+                    'user': org,
+                    'collabuser' : candidate
+                }, function (err, res) {
+                    if (!err) {
+                        console.log ('added ' + candidate + ' to ' + target + '.')
+                        return;
+                    } else {
+                        console.log ('something went wrong sharing repo with candidate.');
+                        return;
+                    }
+                });
+
+
+
             });
 
-            console.log ('sharing repo with candidate ' + candidate);
-            
-            github.repos.addCollaborator ({
-                'repo':  target,
-                'user': org,
-                'collabuser' : candidate
-            }, function (err, res) {
-                if (!err) {
-                    console.log ('added ' + candidate + ' to ' + target)
-                    return;
-                } else {
-                    console.log ('something went wrong sharing repo with candidate.');
-                    return;
-                }
-            });
         });
     });
 })();
