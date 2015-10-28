@@ -105,7 +105,7 @@ module.exports = (function() {
 
             console.log ('changing permissions for team.');
 
-            github.orgs.updateTeam ({'id' : team, 'name' : target, 'permission' : 'push'}, function (err, res) {
+            github.orgs.updateTeam ({'id' : team, 'permission' : 'push'}, function (err, res) {
 
                 if (err) {
                     console.log ('something went wrong updating permissions for team.');
