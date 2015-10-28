@@ -3,7 +3,7 @@
 require('dotenv').load();
 
 
-module.exports = (function() {
+module.exports = (function () {
 
     var inquirer = require('inquirer');
     var exec = require('child_process').exec;
@@ -11,7 +11,7 @@ module.exports = (function() {
     var token = process.env.GITHUB_API_TOKEN;
 
     if (!token) {
-        console.log ('please add GITHUB_API_TOKEN to your .env file.');
+        console.log('please add GITHUB_API_TOKEN to your .env file.');
         return false;
     }
 
@@ -23,7 +23,7 @@ module.exports = (function() {
 
     // initalize github client
     var GitHubApi = require('github');
-    
+
     var github = new GitHubApi({
         version: '3.0.0',
         debug: debug,
@@ -69,7 +69,7 @@ module.exports = (function() {
             message: 'Reviewer team ID. It\'s an integer. (default: ' + team + '):'
         }
 
-    ], function(answers) {
+    ], function (answers) {
         if (answers.candidate) {
             candidate = answers.candidate;
         }
@@ -87,67 +87,64 @@ module.exports = (function() {
         }
 
         if (!candidate || !repo || !org || !team) {
-            console.log ('bad info!');
+            console.log('bad info!');
             return;
         }
 
         var target = candidate + '-' + repo;
 
-        console.log ('creating repo ' + org + '/' + target + '.');
-        github.repos.createFromOrg ({'name':  target, 'private' : true, 'org': org, 'team_id':team}, function (err, res){
+        console.log('creating repo ' + org + '/' + target + '.');
+        github.repos.createFromOrg({'name': target, 'private': true, 'org': org, 'team_id': team}, function (err, res) {
 
             if (err) {
-                console.log ('something went wrong creating repo.');
-                console.log (err);
+                console.log('something went wrong creating repo.');
+                console.log(err);
                 return;
             }
 
-            console.log ('changing permissions for team.');
+            console.log('changing permissions for team.');
 
-            github.orgs.updateTeam ({'id' : team, 'name' : target, 'permission' : 'push'}, function (err, res) {
-
-console.log (res); return;
+            github.orgs.updateTeam({'id': team, 'name': target, 'permission': 'push'}, function (err, res) {
                 if (err) {
-                    console.log ('something went wrong updating permissions for team.');
-                    console.log (err);
+                    console.log('something went wrong updating permissions for team.');
+                    console.log(err);
                     return;
                 }
 
-                console.log ('cloning ' + repo + ' into local machine, and pushing to ' + target + '.');
+                console.log('cloning ' + repo + ' into local machine, and pushing to ' + target + '.');
                 var sh = 'git clone git@github.com:hellofresh/' + repo +
-                            '&& cd ' + repo +
-                            '&& git remote set-url origin git@github.com:hellofresh/' + target +
-                            '&& git push origin master' +
-                            '&& cd ..' + 
-                            '&& rm -rf ' + repo;
-                
-                exec (sh, function (error, stdout, stderr) {
-                    console.log (error);
-                    console.log (stdout);
-                    console.log (stderr);
-    
+                    '&& cd ' + repo +
+                    '&& git remote set-url origin git@github.com:hellofresh/' + target +
+                    '&& git push origin master' +
+                    '&& cd ..' +
+                    '&& rm -rf ' + repo;
+
+                exec(sh, function (error, stdout, stderr) {
+                    console.log(error);
+                    console.log(stdout);
+                    console.log(stderr);
+
                     if (error) {
-                        console.log ('something went wrong duplicating the repo.');
-                        return;
-                    }
-                });
-    
-                console.log ('sharing repo with candidate ' + candidate + '.');
-                
-                github.repos.addCollaborator ({
-                    'repo':  target,
-                    'user': org,
-                    'collabuser' : candidate
-                }, function (err, res) {
-                    if (!err) {
-                        console.log ('added ' + candidate + ' to ' + target + '.')
-                        return;
-                    } else {
-                        console.log ('something went wrong sharing repo with candidate.');
+                        console.log('something went wrong duplicating the repo.');
                         return;
                     }
                 });
 
+                console.log('sharing repo with candidate ' + candidate + '.');
+
+                github.repos.addCollaborator({
+                    'repo': target,
+                    'user': org,
+                    'collabuser': candidate
+                }, function (err, res) {
+                    if (!err) {
+                        console.log('added ' + candidate + ' to ' + target + '.')
+                        return;
+                    } else {
+                        console.log('something went wrong sharing repo with candidate.');
+                        return;
+                    }
+                });
 
 
             });
