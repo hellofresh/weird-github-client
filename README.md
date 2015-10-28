@@ -19,6 +19,7 @@ More Than Food.
 Copy the `.env.dist` file to `.env` and add your github API token, as well as your default configs.
 
 To get the team ID run the following command:
+
 `curl -H "Authorization: token <github_api_token>" https://api.github.com/orgs/hellofresh/teams`
 
 IMPORTANT: The github token must have the `repo` and `admin:org` scopes.
