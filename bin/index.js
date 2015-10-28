@@ -42,6 +42,7 @@ module.exports = (function() {
         token: token
     });
 
+
 //        uncomment this if you want to just check the team ids, you might need it if you want to change teams.
 //        github.orgs.getTeams ({'org': 'hellofresh'}, function (err, res){    console.log(JSON.stringify(res));});
 //        return;
@@ -106,7 +107,6 @@ module.exports = (function() {
 
             github.orgs.updateTeam ({'id' : team, 'name' : target, 'permission' : 'push'}, function (err, res) {
 
-console.log (res); return;
                 if (err) {
                     console.log ('something went wrong updating permissions for team.');
                     console.log (err);
