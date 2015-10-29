@@ -14,7 +14,7 @@ If it fits your purposes, feel free to use it.
 HelloFresh
 More Than Food.
 
-# usage
+# Usage
 
 Copy the `.env.dist` file to `.env` and add your github API token, as well as your default configs.
 
@@ -31,3 +31,6 @@ Then just follow the prompt.
 `npm`.
 
 
+## Setup
+
+To generate your own github API token go to this page: https://github.com/settings/tokens/new. Add the token to your `.env` file.
