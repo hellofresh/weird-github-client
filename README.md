@@ -12,14 +12,13 @@ You might not need this at all, because forking works 99% of the cases.
 
 However, if it does fit your purposes, feel free to use it.
 
-HelloFresh
-More Than Food.
+HelloFresh - More Than Food.
 
 # Usage
 
 1. Generate your own GitHub API token here: https://github.com/settings/tokens/new. The token must have the `repo` and `admin:org` scopes.
 
-2. Copy the `.env.dist` file to `.env`.
+2. Copy the `.env.dist` file to `.env`. 
 
 3. Add the GitHub token to your `.env` file, plus some sane defaults that fit your scenario.
 
