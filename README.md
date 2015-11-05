@@ -2,24 +2,28 @@
 
 In short, this command:
 
-1. creates a new private repo in your organization (ex. `hellofresh/{candidate}-{test-name}`);
-2. associates it with a code reviewing team
-3. shares the repo with a github user
+1. Creates a new private repo in your organization, based on an existing repo (`hellofresh/{candidate}-{existing-repo}`);
+2. Associates it with a code reviewing team;
+3. Shares the repo with a github user.
 
-This command is used to bootstrap a technical test repo for our candidates.
-The candidate then submits his code to that repo's `dev` branch and creates a PR to `master` that our engineers will review.
+We use it at HelloFresh to bootstrap a private repo with the technical test for our candidates, based on an existing repo. 
 
-If it fits your purposes, feel free to use it.
+You might not need this at all, because forking works 99% of the cases.
+
+However, if it does fit your purposes, feel free to use it.
 
 HelloFresh
 More Than Food.
 
 # Usage
 
-Copy the `.env.dist` file to `.env` and add your github API token, as well as your default configs.
+1. Generate your own GitHub API token here: https://github.com/settings/tokens/new. The token must have the `repo` and `admin:org` scopes.
 
-IMPORTANT: The github token must have the `repo` and `admin:org` scopes.
+2. Copy the `.env.dist` file to `.env`.
 
+3. Add the GitHub token to your `.env` file, plus some sane defaults that fit your scenario.
+
+4. Run
 ```
 ./bin/index.js
 ```
@@ -30,7 +34,3 @@ Then just follow the prompt.
 
 `npm`.
 
-
-## Setup
-
-To generate your own github API token go to this page: https://github.com/settings/tokens/new. Add the token to your `.env` file.
