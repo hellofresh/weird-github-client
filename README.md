@@ -8,7 +8,7 @@
 
 This client has 2 commands, that you can interact with on the command line.
 
-## `./bin/check-four-eyes.js`
+`./bin/check-four-eyes.js`
 
 Generates a `.tsv` file listing all the PR's in a repo.
 It also checks if the author of the PR is the one merging it.
@@ -16,7 +16,7 @@ If so, one of the columns will have the value `KO`.
 If, on the other hand, the user merging the PR is different one than it's author, it'll say `OK`.
 
 
-## `./bin/spawn-technical-test.js`
+`./bin/spawn-technical-test.js`
 
 Creates a new private repo in your organization, based on an existing repo (`hellofresh/{candidate}-{existing-repo}`);
 Shares it with a code reviewing team in your organization.
