@@ -10,6 +10,6 @@ module.exports = (function() {
     var githubWrapper = new GithubWrapper();
 
     var commander = new Commander(githubWrapper);
-    commander.start();
+    commander.spawnTechnicalTest();
 
 }());
