@@ -6,7 +6,7 @@
 
 # hellofresh/weird-github-client
 
-This client has 2 commands, that you can interact with on the command line.
+Weird GitHub client automates some tasks on GitHub via it's API. It does... stuff.
 
 `./bin/check-four-eyes.js`
 
@@ -14,7 +14,6 @@ Generates a `.tsv` file listing all the PR's in a repo.
 It also checks if the author of the PR is the one merging it.
 If so, one of the columns will have the value `KO`.
 If, on the other hand, the user merging the PR is different one than it's author, it'll say `OK`.
-
 
 `./bin/spawn-technical-test.js`
 
@@ -34,17 +33,13 @@ However, if it does fit your purposes, feel free to use it.
 
 3. Add the GitHub token to your `.env` file, plus some sane defaults that fit your scenario.
 
-4. Run
-```
-./bin/index.js
-```
+4. Run one of the above mentioned commands.
 
-Then just follow the prompt.
+5. follow the prompt.
 
 ## Requisites
 
 `npm`.
-
 
 Have fun!
 
