@@ -1,18 +1,29 @@
-# hellofresh/duplicate-repo
+<p align="center">
+  <a href="https://hellofresh.com">
+    <img width="120" src="https://www.hellofresh.de/images/hellofresh/press/HelloFresh_Logo.png">
+  </a>
+</p>
 
-In short, this command:
+# hellofresh/weird-github-client
 
-1. Creates a new private repo in your organization, based on an existing repo (`hellofresh/{candidate}-{existing-repo}`);
-2. Associates it with a code reviewing team;
-3. Shares the repo with a github user.
+Weird GitHub client automates some tasks on GitHub via it's API. It does... stuff.
+
+`./bin/check-four-eyes.js`
+
+Generates a `.tsv` file listing all the PR's in a repo.
+It also checks if the author of the PR is the one merging it.
+If so, one of the columns will have the value `KO`.
+If, on the other hand, the user merging the PR is different one than it's author, it'll say `OK`.
+
+`./bin/spawn-technical-test.js`
+
+Creates a new private repo in your organization, based on an existing repo (`hellofresh/{candidate}-{existing-repo}`);
+Shares it with a code reviewing team in your organization.
+Shares it with a github user.
 
 We use it at HelloFresh to bootstrap a private repo with the technical test for our candidates, based on an existing repo. 
-
-You might not need this at all, because forking works 99% of the cases.
-
+You might not need this at all, because forking would do the trick in 99% of the cases.
 However, if it does fit your purposes, feel free to use it.
-
-HelloFresh - More Than Food.
 
 # Usage
 
@@ -22,16 +33,15 @@ HelloFresh - More Than Food.
 
 3. Add the GitHub token to your `.env` file, plus some sane defaults that fit your scenario.
 
-4. Run
-```
-./bin/index.js
-```
+4. Run one of the above mentioned commands.
 
-Then just follow the prompt.
+5. follow the prompt.
 
 ## Requisites
 
 `npm`.
 
-
 Have fun!
+
+HelloFresh - More Than Food.
+
