@@ -15,6 +15,17 @@ It also checks if the author of the PR is the one merging it.
 If so, one of the columns will have the value `KO`.
 If, on the other hand, the user merging the PR is different one than it's author, it'll say `OK`.
 
+`./bin/developer-stats.js`
+
+Crawls through all the repos in your organization.
+
+It outputs a text that summarizes:
+- how many commits, changed lines and average changed lines per commit each developer has done over the current week.
+- how many commits, changed lines and average changed lines per commit have been done in each repo over the current week.
+- it only accounts for changes done to the *repo's default branch*.
+
+It outputs that summary to the console, and, if configured properly (via `.env`) it also publishes this info to a slack channel.
+
 `./bin/spawn-technical-test.js`
 
 Creates a new private repo in your organization, based on an existing repo (`hellofresh/{candidate}-{existing-repo}`);
