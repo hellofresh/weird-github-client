@@ -36,9 +36,13 @@ We use it at HelloFresh to bootstrap a private repo with the technical test for 
 You might not need this at all, because forking would do the trick in 99% of the cases.
 However, if it does fit your purposes, feel free to use it.
 
+`./bin/archive-technical-test.js`
+
+Archives a candidate's test branch into a an archive repository, and if needed, deletes the candidate's repo.
+
 # Usage
 
-1. Generate your own GitHub API token here: https://github.com/settings/tokens/new. The token must have the `repo` and `admin:org` scopes.
+1. Generate your own GitHub API token here: https://github.com/settings/tokens/new. The token must have the `repo` and `admin:org` scopes. For the `./bin/archive-technical-test.js` you should add the `delete_repo` scope, in case you want to delete the repo after archived.
 
 2. Copy the `.env.dist` file to `.env`. 
 
