@@ -1,4 +1,4 @@
 *.tsv
 .env
-client_secret.json
+google-drive-credentials.json
 node_modules
