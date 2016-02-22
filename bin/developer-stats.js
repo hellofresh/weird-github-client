@@ -9,7 +9,7 @@ module.exports = (function() {
     var Commander = require('../lib/DeveloperStatsCommander');
 
     var githubWrapper = new GithubWrapper();
-    var googleSpreadsheetWrapper = new GoogleSpreadsheetWrapper();
+    var googleSpreadsheetWrapper = new GoogleSpreadsheetWrapper(process.env.DEV_STATS_GOOGLE_DRIVE_SPREADSHEET_ID);
 
     var commander = new Commander(githubWrapper, googleSpreadsheetWrapper);
     commander.start();
