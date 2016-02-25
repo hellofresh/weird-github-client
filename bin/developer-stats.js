@@ -24,7 +24,7 @@ module.exports = (function() {
     }
 
     if (process.env.DEV_STATS_USE_SLACK === 'true') {
-        slackWrapper = new SlackWrapper ({
+        slackWrapper = new SlackWrapper({
             username: process.env.DEV_STATS_SLACK_USERNAME,
             emoji: process.env.DEV_STATS_SLACK_EMOJI,
             url: process.env.DEV_STATS_SLACK_URL,
