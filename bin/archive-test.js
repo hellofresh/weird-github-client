@@ -10,7 +10,7 @@ module.exports = (function() {
     var Commander = require('../lib/Commander');
     var Program = require('../lib/Programs/ArchiveTest');
 
-    var commander = new Commander();
+    var commander = new Commander(name, message);
     var program = new Program (commander);
 
     program.run();
