@@ -8,7 +8,7 @@ module.exports = (function() {
     var message = 'Lists the repos of an organization.';
 
     var Commander = require('../lib/Commander');
-    var Program = require('../lib/ListRepos');
+    var Program = require('../lib/Programs/ListRepos');
 
     var commander = new Commander(name, message);
     var program = new Program (commander);
