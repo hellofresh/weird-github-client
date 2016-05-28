@@ -4,10 +4,13 @@ require('dotenv').load();
 
 module.exports = (function() {
 
-    var Commander = require('../lib/Commander');
-    var Program = require('../lib/NormalizeRepo');
+    var name = 'normalize-repo';
+    var message = 'Enforces that particular teams are added to avrepo and integrates that repo with pullapprove.';
 
-    var commander = new Commander();
+    var Commander = require('../lib/Commander');
+    var Program = require('../lib/Programs/NormalizeRepo');
+
+    var commander = new Commander(name, message);
     var program = new Program (commander);
 
     program.run();
