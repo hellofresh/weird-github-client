@@ -5,7 +5,7 @@ require('dotenv').load();
 module.exports = (function() {
 
     var Commander = require('../lib/Commander');
-    var Program = require('../lib/ListGithubTeams');
+    var Program = require('../lib/ListTeams');
 
     var commander = new Commander();
     var program = new Program (commander);
