@@ -4,10 +4,13 @@ require('dotenv').load();
 
 module.exports = (function() {
 
-    var Commander = require('../lib/Commander');
-    var Program = require('../lib/ListTeams');
+    var name = 'list-teams';
+    var message = 'Lists the teams of an organization.';
 
-    var commander = new Commander();
+    var Commander = require('../lib/Commander');
+    var Program = require('../lib/Programs/ListTeams');
+
+    var commander = new Commander(name, message);
     var program = new Program (commander);
 
     program.run();
