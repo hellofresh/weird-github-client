@@ -4,11 +4,11 @@ require('dotenv').load();
 
 module.exports = (function() {
 
-    var name = 'normalize-teams';
-    var message = 'Enforces that particular teams are added to a repo and integrates that repo with pullapprove.';
+    var name = 'set-team-permissions';
+    var message = 'Edits a team\'s default permissions.';
 
     var Commander = require('../lib/Commander');
-    var Program = require('../lib/Programs/NormalizeRepo');
+    var Program = require('../lib/Programs/SetTeamPermissions');
 
     var commander = new Commander(name, message);
     var program = new Program (commander);
