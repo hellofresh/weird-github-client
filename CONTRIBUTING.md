@@ -34,9 +34,6 @@ We are committed to providing a friendly, safe and welcoming environment for
 all, regardless of gender, sexual orientation, disability, ethnicity, religion,
 or similar personal characteristic.
 
-On IRC, please avoid using overtly sexual nicknames or other nicknames that
-might detract from a friendly, safe and welcoming environment for all.
-
 Please be kind and courteous. There's no need to be mean or rude.
 Respect that people have differences of opinion and that every design or
 implementation choice carries a trade-off and numerous costs. There is seldom
@@ -56,7 +53,7 @@ excludes people in socially marginalized groups.
 
 Private harassment is also unacceptable. No matter who you are, if you feel
 you have been or are being harassed or made uncomfortable by a community
-member, please contact one of the channel ops or any of the
+member, please contact one of the
 [hellofresh](https://github.com/orgs/hellofresh/people) core team
 immediately. Whether you're a regular contributor or a newcomer, we care about
 making this community a safe place for you and we've got your back.
