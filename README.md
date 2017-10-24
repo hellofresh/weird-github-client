@@ -6,6 +6,8 @@
 
 # hellofresh/weird-github-client
 
+### Deprecated in favour of [github-cli](https://github.com/hellofresh/github-cli)
+
 Weird GitHub client automates some tasks on GitHub via it's API.
 
 `./bin/archive-repo.js`
